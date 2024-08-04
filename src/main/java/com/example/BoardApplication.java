@@ -1,7 +1,6 @@
 package com.example;
 
 
-import com.example.practicejava.PracticeJavaApplication;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

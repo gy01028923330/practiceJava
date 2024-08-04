@@ -1,12 +1,15 @@
 package com.example.board.service;
 
 
-import com.example.board.dto.BoardCreateRequestDto;
+import com.example.board.controller.BoardController;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class BoardService {
 
+    private final BoardController boardController;
 
     /**
      * Service 란 Controller 에서 전달받은 데이터를 기반으로 서비스로직을 구현하는 클래스(컴포넌트)
