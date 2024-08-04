@@ -1,4 +1,4 @@
-package com.example.baseballGame;
+package com.example.practicejava.baseballGame;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

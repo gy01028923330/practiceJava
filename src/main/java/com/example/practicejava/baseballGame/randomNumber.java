@@ -1,4 +1,4 @@
-package com.example.baseballGame;
+package com.example.practicejava.baseballGame;
 
 import lombok.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

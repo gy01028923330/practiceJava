@@ -1,4 +1,4 @@
-package com.example.baseballGame;
+package com.example.practicejava.baseballGame;
 
 import org.springframework.stereotype.Service;
 
