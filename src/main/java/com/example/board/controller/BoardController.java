@@ -1,7 +1,6 @@
 package com.example.board.controller;
 
 
-import com.example.board.domain.Board;
 import com.example.board.dto.BoardCreateRequestDto;
 import com.example.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardController {
 
     /**
-
      Controller 란 사용자의 화면, 즉 View 단과 맞닿아 있는 클래스(컴포넌트)
      -역할
      화면에서 전송되는 데이터를 전달받은 매개체

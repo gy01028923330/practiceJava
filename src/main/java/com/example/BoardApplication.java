@@ -1,14 +1,10 @@
 package com.example;
 
 
-import com.example.member.domain.Member;
-import com.example.member.service.MemberService;
+import com.example.practicejava.PracticeJavaApplication;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 @RequiredArgsConstructor
 @SpringBootApplication
@@ -16,120 +12,122 @@ public class BoardApplication {
 
 
     public static void main(String[] args) {
-
-        MemberService memberService = new MemberService();
-        /**
-
-         문제
-         총 가입되는 회원은 5명
-         회원의 정보를 sout 으로 출력한다.
-         중복검사는 아이디와 이름 2가지가 모두 기존 회원 정보와 달라야 가입된다.
-         결과는 1번, 2번 ,4번 회원만 가입되어야 한다.
-         *///전체 가입된 회원 목록
-        List<Member> completeMember = new ArrayList<>();
-
-        //1번 회원
-        //Controller 에서 받아온 데이터로 가정
-        Member member = new Member();
-        String id = "member1";
-        String password = "1234";
-        String name = "김진규";
-        Member member1 = new Member(id, password, name, "남", 18);
-        //2번 회원
-        String id2 = "member2";
-        String password2 = "1234";
-        String name2 = "박성술";
-        Member member2 = new Member(id2, password2, name2, "남", 19);
-        //3번 회원
-        String id3 = "member3";
-        String password3 = "1234";
-        String name3 = "김지아";
-        Member member3 = new Member(id3, password3, name3, "여", 17);
-        //4번 회원
-        String id4 = "member4";
-        String password4 = "1234";
-        String name4 = "김태희";
-        Member member4 = new Member(id4, password4, name4, "여", 20);
-        //5번 회원
-        String id5 = "member5";
-        String password5 = "1234";
-        String name5 = "카리나";
-        Member member5 = new Member(id5, password5, name5, "여", 21);
-
-
-        completeMember = memberService.createMember(member1, completeMember);
-        completeMember = memberService.createMember(member2, completeMember);
-        completeMember = memberService.createMember(member3, completeMember);
-        completeMember = memberService.createMember(member4, completeMember);
-        completeMember = memberService.createMember(member5, completeMember);
-//        ---------------------------create--------------------------------
-
-        System.out.println(completeMember.toString());
-
-        List<Member> findResults = new ArrayList<>();
-
-        findResults = memberService.searchMemberByGender(completeMember, "남");
-
-        System.out.println(findResults);
-
-        findResults = memberService.searchMemberByGender(completeMember, "여");
-
-        System.out.println(findResults);
-
-        List<Member> findResults2 = new ArrayList<>();
-        findResults2 = memberService.searchMemberByGenderAndAge(completeMember, "여", 19, 20);
-        System.out.println(findResults2);
-
-        String inputId;
-        String inputPassword;
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("회원 ID를 입력하세요");
-        inputId = sc.next();
-        System.out.println("회원 비밀번호를 입력하세요");
-        inputPassword = sc.next();
-
-        Member findedMember = memberService.findMember(completeMember, inputId);
-
-        if (findedMember == null) {
-            System.out.println("일치하는 회원이 없습니다.");
-            return;
-        }
-
-        Boolean login = memberService.login(findedMember, inputId, inputPassword);
-
-        if (login) {
-            System.out.println("로그인");
-        } else {
-            System.out.println("로그인에 실패했습니다.");
-            return;
-        }
-//      --------------------------------read-------------------------
-        System.out.println("변경 할 비밀먼호를 입력");
-        String inputChangePassword = sc.next();
-        System.out.println("변경 할 이름을 입력");
-        String inputChangeName = sc.next();
-        System.out.println("변경 할 성별을 입력");
-        String inputChangeGender = sc.next();
-        System.out.println("변경 할 나이를 입력");
-        Integer inputChangeAge = sc.nextInt();
-
-
-        Member updatedMember = memberService.updateMember(findedMember, inputChangePassword, inputChangeName, inputChangeGender, inputChangeAge);
-        completeMember = memberService.save(completeMember, updatedMember);
-        System.out.println("수정 완료");
-//      ----------------------update---------------------
-
-        completeMember = memberService.deleteMember(completeMember, findedMember);
+        //스프링부트 실행 함수
+        SpringApplication.run(PracticeJavaApplication.class, args);
+    }
+}
+//
+//        MemberService memberService = new MemberService();
+//        /**
+//
+//         문제
+//         총 가입되는 회원은 5명
+//         회원의 정보를 sout 으로 출력한다.
+//         중복검사는 아이디와 이름 2가지가 모두 기존 회원 정보와 달라야 가입된다.
+//         결과는 1번, 2번 ,4번 회원만 가입되어야 한다.
+//         *///전체 가입된 회원 목록
+//        List<Member> completeMember = new ArrayList<>();
+//
+//        //1번 회원
+//        //Controller 에서 받아온 데이터로 가정
+//        Member member = new Member();
+//        String id = "member1";
+//        String password = "1234";
+//        String name = "김진규";
+//        Member member1 = new Member(id, password, name, "남", 18);
+//        //2번 회원
+//        String id2 = "member2";
+//        String password2 = "1234";
+//        String name2 = "박성술";
+//        Member member2 = new Member(id2, password2, name2, "남", 19);
+//        //3번 회원
+//        String id3 = "member3";
+//        String password3 = "1234";
+//        String name3 = "김지아";
+//        Member member3 = new Member(id3, password3, name3, "여", 17);
+//        //4번 회원
+//        String id4 = "member4";
+//        String password4 = "1234";
+//        String name4 = "김태희";
+//        Member member4 = new Member(id4, password4, name4, "여", 20);
+//        //5번 회원
+//        String id5 = "member5";
+//        String password5 = "1234";
+//        String name5 = "카리나";
+//        Member member5 = new Member(id5, password5, name5, "여", 21);
+//
+//
+//        completeMember = memberService.createMember(member1, completeMember);
+//        completeMember = memberService.createMember(member2, completeMember);
+//        completeMember = memberService.createMember(member3, completeMember);
+//        completeMember = memberService.createMember(member4, completeMember);
+//        completeMember = memberService.createMember(member5, completeMember);
+////        ---------------------------create--------------------------------
+//
+//        System.out.println(completeMember.toString());
+//
+//        List<Member> findResults = new ArrayList<>();
+//
+//        findResults = memberService.searchMemberByGender(completeMember, "남");
+//
+//        System.out.println(findResults);
+//
+//        findResults = memberService.searchMemberByGender(completeMember, "여");
+//
+//        System.out.println(findResults);
+//
+//        List<Member> findResults2 = new ArrayList<>();
+//        findResults2 = memberService.searchMemberByGenderAndAge(completeMember, "여", 19, 20);
+//        System.out.println(findResults2);
+//
+//        String inputId;
+//        String inputPassword;
+//
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("회원 ID를 입력하세요");
+//        inputId = sc.next();
+//        System.out.println("회원 비밀번호를 입력하세요");
+//        inputPassword = sc.next();
+//
+//        Member findedMember = memberService.findMember(completeMember, inputId);
+//
+//        if (findedMember == null) {
+//            System.out.println("일치하는 회원이 없습니다.");
+//            return;
+//        }
+//
+//        Boolean login = memberService.login(findedMember, inputId, inputPassword);
+//
+//        if (login) {
+//            System.out.println("로그인");
+//        } else {
+//            System.out.println("로그인에 실패했습니다.");
+//            return;
+//        }
+////      --------------------------------read-------------------------
+//        System.out.println("변경 할 비밀먼호를 입력");
+//        String inputChangePassword = sc.next();
+//        System.out.println("변경 할 이름을 입력");
+//        String inputChangeName = sc.next();
+//        System.out.println("변경 할 성별을 입력");
+//        String inputChangeGender = sc.next();
+//        System.out.println("변경 할 나이를 입력");
+//        Integer inputChangeAge = sc.nextInt();
+//
+//
+//        Member updatedMember = memberService.updateMember(findedMember, inputChangePassword, inputChangeName, inputChangeGender, inputChangeAge);
+//        completeMember = memberService.save(completeMember, updatedMember);
+//        System.out.println("수정 완료");
+////      ----------------------update---------------------
+//
+//        completeMember = memberService.deleteMember(completeMember, findedMember);
 
 
         //여기 main 메소드에서 searchMemberByGender 메소드를 호출
         // 1번째 호출 시 남자 회원만 적용 후 sout 출력
         // 2번째 호출 시 여자 회원만 적용 후 sout 출력
 
-    }
 
-}
 
 //한꺼번에 변경하는 단축키 => Shift+F6
 //completeMember 라는 회원 배열객체를 만든 이유 => 가입된 회원을 정리하기 위해서.
