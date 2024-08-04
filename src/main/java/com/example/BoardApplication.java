@@ -13,7 +13,7 @@ public class BoardApplication {
 
     public static void main(String[] args) {
         //스프링부트 실행 함수
-        SpringApplication.run(PracticeJavaApplication.class, args);
+        SpringApplication.run(BoardApplication.class, args);
     }
 }
 //
