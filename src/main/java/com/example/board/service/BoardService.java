@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardService {
 
-    private final BoardController boardController;
-
     /**
      * Service 란 Controller 에서 전달받은 데이터를 기반으로 서비스로직을 구현하는 클래스(컴포넌트)
      *  역할
