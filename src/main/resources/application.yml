@@ -2,6 +2,7 @@ server:
   port: 8080 # ?? ?? ????
 
   # H2 Database ??
+  # H2 DB 웹 콘솔 접근 주소 => http://localhost:8080/h2-console
 spring:
   thymeleaf:
     prefix: classpath:/templates/
