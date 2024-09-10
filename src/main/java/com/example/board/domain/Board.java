@@ -21,11 +21,9 @@ public class Board {
      * 게시판 제목
      *
      */
-    private String boardName;
-    private String category;
     @Id
     private Long boardId;
-
-
+    private String boardName;
+    private String category;
 
 }
