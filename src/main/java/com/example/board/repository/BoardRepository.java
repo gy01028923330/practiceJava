@@ -1,13 +1,16 @@
 package com.example.board.repository;
 
 
-import org.springframework.stereotype.Repository;
+import com.example.board.domain.Board;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface BoardRepository {
+public interface BoardRepository extends JpaRepository<Board, Long> {
 
     /**
-     * repository 란 DB아 직접적으로 맞닿아 있는 클래스(컴포넌트)
+     * repository 란 DB아 직접적으로 맞닿아 있는 클래스(컴포 넌트)
      */
 
 }
+
+
+

@@ -12,7 +12,6 @@ spring:
     cache: false
 
   datasource:
-    driver-class-name: org.h2.Driver
     url: 'jdbc:h2:mem:test'   # H2 DB ?? ?? (In-Memory Mode)
     #url: 'jdbc:h2:~/test'    # H2 DB ?? ?? (Embedded Mode)
     username: sa        # H2 DB ?? ID (??? ??)
@@ -30,7 +29,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create        # DB ??? ?? (none, create, create-drop, update, validate)
+      ddl-auto: update #JPA의 동작 방식        # DB ??? ?? (none, create, create-drop, update, validate)
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect

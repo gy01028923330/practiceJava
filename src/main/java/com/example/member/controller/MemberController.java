@@ -61,40 +61,6 @@ public class MemberController {
 
     @PostMapping
     public String createMember() {
-        List<Member> completeMember = new ArrayList<>();
-
-        Member member = new Member();
-        String id = "member1";
-        String password = "1234";
-        String name = "김진규";
-        Member member1 = new Member(id, password, name, "남", 18);
-        //2번 회원
-        String id2 = "member2";
-        String password2 = "1234";
-        String name2 = "박성술";
-        Member member2 = new Member(id2, password2, name2, "남", 19);
-        //3번 회원
-        String id3 = "member3";
-        String password3 = "1234";
-        String name3 = "김지아";
-        Member member3 = new Member(id3, password3, name3, "여", 17);
-        //4번 회원
-        String id4 = "member4";
-        String password4 = "1234";
-        String name4 = "김태희";
-        Member member4 = new Member(id4, password4, name4, "여", 20);
-        //5번 회원
-        String id5 = "member5";
-        String password5 = "1234";
-        String name5 = "카리나";
-        Member member5 = new Member(id5, password5, name5, "여", 21);
-
-
-        completeMember = memberService.createMember(member1, completeMember);
-        completeMember = memberService.createMember(member2, completeMember);
-        completeMember = memberService.createMember(member3, completeMember);
-        completeMember = memberService.createMember(member4, completeMember);
-        completeMember = memberService.createMember(member5, completeMember);
         return null;
     }
 

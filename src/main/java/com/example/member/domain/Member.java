@@ -1,9 +1,11 @@
 package com.example.member.domain;
 
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
-@ToString
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -11,7 +13,10 @@ import lombok.*;
 @NoArgsConstructor
 public class Member {
 
-    private String Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String password;
     private String name;
     private String gender;
