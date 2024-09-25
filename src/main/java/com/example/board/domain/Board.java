@@ -1,13 +1,11 @@
 package com.example.board.domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class Board {
      *
      */
     @Id @Column(name = "board_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // PK
     @Column
     private String boardName;

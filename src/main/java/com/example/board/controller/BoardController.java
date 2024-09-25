@@ -50,7 +50,7 @@ public class BoardController {
             // => 메모리의 효율성 증가.
         // -> 3. AOP -> Aspect(시간의 점) Oriented Programming
 
-        return "게시판 생성 완료 OR 에러";
+        return "게시판 생성 완료";
     }
 
 }
