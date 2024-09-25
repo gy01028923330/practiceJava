@@ -1,17 +1,18 @@
 package com.example.board.service;
 
 
-import com.example.board.controller.BoardController;
 import com.example.board.domain.Board;
+import com.example.board.dto.BoardSearchCondition;
 import com.example.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class BoardService {
-
 
 
     private final BoardRepository boardRepository;
@@ -24,22 +25,24 @@ public class BoardService {
      * 3. 에러가 발생 할 경우 이를 처리하는 부분 (프로젝트 전략에 따라 다를 수 있다)
      */
 
-
     @Transactional
     public void create(String boardName, String category) {
-        // DB의 SQL 을 정의 하는 세가지 종류
-        // DDL, DML, DCL
-        // create 문 -> Table 생성.
-        // insert 문 -> Table 내부 Row data 를 생성 한다.
-        // ->  DML문을 사용할 때, commit 명령어를 사용해야 DB에 정상적으로 저장 된다.
-        // --> commit을 사용하는 이유 => Transaction 단위로 DB가 동작하기 때문.
         boardRepository.save(
                 Board.builder()
                         .boardName(boardName) // "테스트보드"
                         .category(category)   // "테스트"
                         .build()
         );
-        // insert into board values (1, "테스트보드", "테스트")
     }
 
+
+    /**
+     * 게시판 조회 메소드
+     */
+    public String findBoard(BoardSearchCondition condition) {
+
+        List<Board> boardList = boardRepository.findAllByBoardNameAndCategory(condition.getBoardName(), condition.getCategory());
+
+        return "";
+    }
 }

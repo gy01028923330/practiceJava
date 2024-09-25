@@ -3,16 +3,14 @@ package com.example.board.controller;
 
 import com.example.board.domain.Board;
 import com.example.board.dto.BoardCreateRequestDto;
+import com.example.board.dto.BoardSearchCondition;
 import com.example.board.service.BoardService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor //스프링에게 동작을 요청하기 위함
@@ -36,7 +34,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping(value = "/api/board")
+    @PostMapping("/api/board")
     public String createBoard(@RequestBody BoardCreateRequestDto requestDto) {
 
         boardService.create(requestDto.getBoardName(), requestDto.getCategory());
@@ -51,6 +49,17 @@ public class BoardController {
         // -> 3. AOP -> Aspect(시간의 점) Oriented Programming
 
         return "게시판 생성 완료";
+    }
+
+    /**
+     * 게시판 목록 조회 API
+     */
+    @GetMapping("/api/board")
+    public String findBoard(@ModelAttribute BoardSearchCondition condition) {
+
+        String result = boardService.findBoard(condition);
+
+        return "게시판 정보 : " + result;
     }
 
 }

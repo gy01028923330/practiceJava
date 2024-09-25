@@ -4,11 +4,12 @@ package com.example.board.repository;
 import com.example.board.domain.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
+import java.util.List;
 
-    /**
-     * repository 란 DB아 직접적으로 맞닿아 있는 클래스(컴포 넌트)
-     */
+public interface BoardRepository extends JpaRepository<Board, Long>, BoardRepositoryCustom {
+    //
+    // 아래와 같은 자동생성 메소드로는 동적 쿼리 불가능
+    List<Board> findAllByBoardNameAndCategory(String boardName, String category);
 
 }
 
