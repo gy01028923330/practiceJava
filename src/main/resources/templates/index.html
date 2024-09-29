@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>숫자 야구 게임</title>
+    <title>게시판 관리</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            background-color: #fff;
+            margin: 0;
             padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .menu {
+            list-style: none;
+            padding: 0;
+        }
+        .menu li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        input[type="text"] {
-            padding: 10px;
-            width: 200px;
-            font-size: 16px;
-            margin-bottom: 10px;
+        .menu a {
+            text-decoration: none;
+            color: #007bff;
         }
-        input[type="submit"] {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
+        .menu a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>숫자 야구 게임</h1>
-    <form action="#" th:action="@{/guess}" method="post">
-        <input type="text" name="inputNumber" placeholder="3자리 숫자를 입력하세요" required>
-        <br>
-        <input type="submit" value="제출">
-    </form>
-    <div class="result" th:text="${result}"></div>
-</div>
+<h1>게시판 관리 시스템</h1>
+<ul class="menu">
+    <li><a th:href="@{/create}">게시판 생성</a></li>
+    <li><a th:href="@{/view}">게시판 조회</a></li>
+    <li><a th:href="@{/update}">게시판 수정</a></li>
+    <li><a th:href="@{/delete}">게시판 삭제</a></li>
+</ul>
 </body>
 </html>

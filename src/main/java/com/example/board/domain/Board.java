@@ -25,6 +25,7 @@ public class Board {
     @Id @Column(name = "board_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // PK
+
     @Column
     private String boardName;
     @Column

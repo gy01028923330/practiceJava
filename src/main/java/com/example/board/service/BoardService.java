@@ -2,6 +2,7 @@ package com.example.board.service;
 
 
 import com.example.board.domain.Board;
+import com.example.board.dto.BoardResponseDto;
 import com.example.board.dto.BoardSearchCondition;
 import com.example.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +45,17 @@ public class BoardService {
         List<Board> boardList = boardRepository.findAllByBoardNameAndCategory(condition.getBoardName(), condition.getCategory());
 
         return "";
+    }
+
+    public BoardResponseDto getBoardById(Long id) {
+        return null;
+    }
+
+    public void delete(Long id) {
+
+    }
+
+    public void update(Long id, String boardName, String category) {
+
     }
 }

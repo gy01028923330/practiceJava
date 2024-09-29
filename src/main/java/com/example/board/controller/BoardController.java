@@ -1,15 +1,13 @@
 package com.example.board.controller;
 
 
-import com.example.board.domain.Board;
 import com.example.board.dto.BoardCreateRequestDto;
+import com.example.board.dto.BoardResponseDto;
 import com.example.board.dto.BoardSearchCondition;
+import com.example.board.dto.BoardUpdateRequestDto;
 import com.example.board.service.BoardService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -34,32 +32,32 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    // 게시판 생성
     @PostMapping("/api/board")
-    public String createBoard(@RequestBody BoardCreateRequestDto requestDto) {
-
+    public ResponseEntity<String> createBoard(@RequestBody BoardCreateRequestDto requestDto) {
         boardService.create(requestDto.getBoardName(), requestDto.getCategory());
-
-        // 개발 주도권을 스프링 프레임워크에게 일임
-        // -> 의존 한다.
-        // Spring Frame WorK의 3가지 주요 기능
-        // -> 1. IOC -> Inversion Of Control 제어의 역전.
-        // -> 2. DI -> Dependency Injection 의존성 주입.
-            // DI의 장점 . Bean 으로 등록된 객체가 사용 하는 시점에 인스턴스화 시킨다.
-            // => 메모리의 효율성 증가.
-        // -> 3. AOP -> Aspect(시간의 점) Oriented Programming
-
-        return "게시판 생성 완료";
+        return ResponseEntity.ok("게시판 생성 완료");
     }
 
-    /**
-     * 게시판 목록 조회 API
-     */
-    @GetMapping("/api/board")
-    public String findBoard(@ModelAttribute BoardSearchCondition condition) {
+    // 게시판 조회
+    @GetMapping("/api/board/{id}")
+    public ResponseEntity<BoardResponseDto> getBoard(@PathVariable Long id) {
+        BoardResponseDto board = boardService.getBoardById(id);
+        return ResponseEntity.ok(board);
+    }
 
-        String result = boardService.findBoard(condition);
+    // 게시판 수정
+    @PutMapping("/api/board/{id}")
+    public ResponseEntity<String> updateBoard(@PathVariable Long id, @RequestBody BoardUpdateRequestDto requestDto) {
+        boardService.update(id, requestDto.getBoardName(), requestDto.getCategory());
+        return ResponseEntity.ok("게시판 수정 완료");
+    }
 
-        return "게시판 정보 : " + result;
+    // 게시판 삭제
+    @DeleteMapping("/api/board/{id}")
+    public ResponseEntity<String> deleteBoard(@PathVariable Long id) {
+        boardService.delete(id);
+        return ResponseEntity.ok("게시판 삭제 완료");
     }
 
 }
