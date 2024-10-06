@@ -35,7 +35,8 @@ public class BoardService {
 //                .build();
 //        boardRepository.save(build);
 
-        boardRepository.save(Board.builder()
+        boardRepository.save(
+                Board.builder()
                 .boardName(boardName) // "테스트보드"
                 .category(category)   // "테스트"
                 .build()
@@ -47,8 +48,13 @@ public class BoardService {
     /**
      * 게시판 목록 조회 메소드
      */
+    @Transactional(readOnly = true)
     public List<BoardResponseDto> findBoard(BoardSearchCondition condition) {
-        List<Board> boardList = boardRepository.findAllByBoardNameAndCategory(condition.getBoardName(), condition.getCategory());
+        List<Board> boardList = boardRepository.findBoardListByCondition(condition);
+
+        //숙제1.  위 boardList 를 List<BoardResponseDto> 만들어서 return 하시오.
+        //숙제2. 목록조회 API가 완성되었는데 querydsl 부분을 분석 및 설명 하시오. 상세하게 전체적으로
+        // => BoardRepositoryImpl.findBoardListByCondition()
         return null;
     }
 

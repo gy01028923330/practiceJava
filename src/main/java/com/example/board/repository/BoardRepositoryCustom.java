@@ -6,6 +6,6 @@ import com.example.board.dto.BoardSearchCondition;
 import java.util.List;
 
 public interface BoardRepositoryCustom {
-    List<Board> findBoardWithCondition(BoardSearchCondition condition);
+    List<Board> findBoardListByCondition(BoardSearchCondition condition);
 
 }

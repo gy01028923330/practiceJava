@@ -9,8 +9,6 @@ public class BoardSearchCondition {
 
     private String boardName;
 
-    private String writer;
-
     private String category;
 
 }
