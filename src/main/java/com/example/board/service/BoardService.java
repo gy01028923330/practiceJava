@@ -11,12 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @RequiredArgsConstructor
 @Service
 public class BoardService {
 
-
     private final BoardRepository boardRepository;
+
 
     /**
      * Service 란 Controller 에서 전달받은 데이터를 기반으로 서비스로직을 구현하는 클래스(컴포넌트)
@@ -28,27 +29,39 @@ public class BoardService {
 
     @Transactional
     public void create(String boardName, String category) {
-        boardRepository.save(
-                Board.builder()
-                        .boardName(boardName) // "테스트보드"
-                        .category(category)   // "테스트"
-                        .build()
+//        Board build = Board.builder()
+//                .boardName(boardName) // "테스트보드"
+//                .category(category)   // "테스트"
+//                .build();
+//        boardRepository.save(build);
+
+        boardRepository.save(Board.builder()
+                .boardName(boardName) // "테스트보드"
+                .category(category)   // "테스트"
+                .build()
         );
+
     }
 
 
     /**
-     * 게시판 조회 메소드
+     * 게시판 목록 조회 메소드
      */
-    public String findBoard(BoardSearchCondition condition) {
-
+    public List<BoardResponseDto> findBoard(BoardSearchCondition condition) {
         List<Board> boardList = boardRepository.findAllByBoardNameAndCategory(condition.getBoardName(), condition.getCategory());
-
-        return "";
+        return null;
     }
 
-    public BoardResponseDto getBoardById(Long id) {
-        return null;
+    /**
+     * 게시판 상세 조회 메소드
+     */
+    public BoardResponseDto getBoardById(Long id) throws Exception {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new Exception("조회 실패"));
+        return BoardResponseDto.builder()
+                .boardId(board.getId())
+                .boardName(board.getBoardName())
+                .category(board.getCategory())
+                .build();
     }
 
     public void delete(Long id) {

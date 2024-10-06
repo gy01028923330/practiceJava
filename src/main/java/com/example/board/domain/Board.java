@@ -3,6 +3,7 @@ package com.example.board.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
 @Builder
 @Entity //DB에 table 을 해당 클래스 기준으로 생성
 public class Board {

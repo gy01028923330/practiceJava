@@ -49,10 +49,44 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // 기본 제출 방지
+
+            const boardName = document.getElementById('boardName').value;
+            const category = document.getElementById('category').value;
+
+            const requestBody = {
+                boardName: boardName,
+                category: category
+            };
+
+            fetch('/api/board', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody) // => requestDto={boardName=테스트2,category=테스트2}
+            })
+                .then(response => {
+
+                    if (response.ok) {
+                        alert('게시판 생성 완료');
+                        // 필요한 경우, 추가 동작을 여기에 작성
+                    } else {
+                        alert('게시판 생성 실패');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('게시판 생성 중 오류가 발생했습니다.');
+                });
+        }
+    </script>
 </head>
 <body>
 <h1>게시판 생성</h1>
-<form th:action="@{/api/board}" method="post">
+<form onsubmit="submitForm(event)">
     <label for="boardName">게시판 이름:</label>
     <input type="text" id="boardName" name="boardName" required />
 

@@ -52,7 +52,7 @@
 </head>
 <body>
 <h1>게시판 조회</h1>
-<form th:action="@{/api/board}" method="get">
+<form th:action="@{/api/board?id=1}" method="get">
     <label for="boardId">게시판 ID:</label>
     <input type="text" id="boardId" name="id" required />
     <button type="submit">조회하기</button>

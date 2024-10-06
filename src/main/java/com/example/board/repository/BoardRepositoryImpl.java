@@ -13,8 +13,7 @@ import static com.example.board.domain.QBoard.board;
 public class BoardRepositoryImpl implements BoardRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
-
-    @Override
+        @Override
     public List<Board> findBoardWithCondition(BoardSearchCondition condition) {
         // JPQL, @Query 과 같은 JPA에서 기본으로 제공하는 SQL 작성 방법도 있지만
         // => querydsl 을 사용 한다.

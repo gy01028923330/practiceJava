@@ -8,7 +8,10 @@ import com.example.board.dto.BoardUpdateRequestDto;
 import com.example.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RequiredArgsConstructor //스프링에게 동작을 요청하기 위함
@@ -38,12 +41,20 @@ public class BoardController {
         boardService.create(requestDto.getBoardName(), requestDto.getCategory());
         return ResponseEntity.ok("게시판 생성 완료");
     }
-
-    // 게시판 조회
-    @GetMapping("/api/board/{id}")
-    public ResponseEntity<BoardResponseDto> getBoard(@PathVariable Long id) {
-        BoardResponseDto board = boardService.getBoardById(id);
+    // DB, 사용자
+    // 1. 게시판 목록 조회
+    @GetMapping("/api/board")
+    public ResponseEntity<List<BoardResponseDto>> getBoard(@ModelAttribute BoardSearchCondition condition) {
+        List<BoardResponseDto> board = boardService.findBoard(condition);
         return ResponseEntity.ok(board);
+    }
+
+    // 2. 게시판 상세 조회
+    @GetMapping("/api/board/{id}")
+    public String getBoardDetail(@PathVariable Long id, Model model) throws Exception {
+        BoardResponseDto board = boardService.getBoardById(id);
+        model.addAttribute("board", board);
+        return "board-detail";
     }
 
     // 게시판 수정

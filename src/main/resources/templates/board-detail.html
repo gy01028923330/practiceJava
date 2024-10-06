@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시판 상세 조회</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .board-details {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .board-details p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .board-details p span {
+            font-weight: bold;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>게시판 상세 조회</h1>
+<div class="board-details">
+    <p><span>게시판 ID:</span> <span th:text="${board.boardId}"></span></p>
+    <p><span>게시판 이름:</span> <span th:text="${board.boardName}"></span></p>
+    <p><span>카테고리:</span> <span th:text="${board.category}"></span></p>
+</div>
+<a th:href="@{/}">메인 페이지로 돌아가기</a>
+</body>
+</html>
