@@ -52,8 +52,8 @@ public class BoardController {
     // 2. 게시판 상세 조회
     @GetMapping("/api/board/{id}")
     public String getBoardDetail(@PathVariable Long id, Model model) throws Exception {
-        BoardResponseDto board = boardService.getBoardById(id);
-        model.addAttribute("board", board);
+        BoardResponseDto responseDto = boardService.getBoardById(id);
+        model.addAttribute("board", responseDto);
         return "board-detail";
     }
 

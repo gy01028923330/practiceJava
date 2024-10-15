@@ -61,13 +61,18 @@ public class BoardService {
     /**
      * 게시판 상세 조회 메소드
      */
+    @Transactional(readOnly = true)
     public BoardResponseDto getBoardById(Long id) throws Exception {
         Board board = boardRepository.findById(id).orElseThrow(() -> new Exception("조회 실패"));
+
         return BoardResponseDto.builder()
                 .boardId(board.getId())
                 .boardName(board.getBoardName())
                 .category(board.getCategory())
                 .build();
+
+        //OSIV -> Open Session In View (On/off)
+        //board.setBoardName("박성술"); //영속성이 살아있는 상태에서만 더티체킹 -> update쿼리 발생.
     }
 
     public void delete(Long id) {

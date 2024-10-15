@@ -1,6 +1,5 @@
 package com.example.core;
 
-import com.example.board.domain.Board;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;

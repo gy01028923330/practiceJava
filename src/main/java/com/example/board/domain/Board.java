@@ -22,12 +22,10 @@ public class Board {
     /**
      * 게시판 카테고리
      * 게시판 제목
-     *
      */
     @Id @Column(name = "board_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // PK
-
     @Column
     private String boardName;
     @Column
