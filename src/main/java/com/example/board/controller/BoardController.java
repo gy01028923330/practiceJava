@@ -45,7 +45,7 @@ public class BoardController {
     // 1. 게시판 목록 조회
     @GetMapping("/api/board")
     public ResponseEntity<List<BoardResponseDto>> getBoard(@ModelAttribute BoardSearchCondition condition) {
-        List<BoardResponseDto> board = boardService.findBoard(condition);
+        List<BoardResponseDto> board = boardService.findBoardList(condition);
         return ResponseEntity.ok(board);
     }
 

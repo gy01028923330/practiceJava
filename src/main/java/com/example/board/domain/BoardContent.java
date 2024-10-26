@@ -2,30 +2,23 @@ package com.example.board.domain;
 
 import com.example.member.domain.Member;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.ManyToAny;
 
 import java.time.LocalDateTime;
-
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
 @Table(name = "board_content")
 @Entity
 public class BoardContent {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
     private String title;
     private String content;
-    private Integer viewCount;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private LocalDateTime deletedAt;
-    private Boolean isOpened;
-    private String hashtag;
-
-
-
 
 }

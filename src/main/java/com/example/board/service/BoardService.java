@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,15 +50,21 @@ public class BoardService {
      * 게시판 목록 조회 메소드
      */
     @Transactional(readOnly = true)
-    public List<BoardResponseDto> findBoard(BoardSearchCondition condition) {
+    public List<BoardResponseDto> findBoardList(BoardSearchCondition condition) {
         List<Board> boardList = boardRepository.findBoardListByCondition(condition);
 
-        //숙제1.  위 boardList 를 List<BoardResponseDto> 만들어서 return 하시오.
-        //숙제2. 목록조회 API가 완성되었는데 querydsl 부분을 분석 및 설명 하시오. 상세하게 전체적으로
-        // => BoardRepositoryImpl.findBoardListByCondition()
-        return null;
-    }
+        List<BoardResponseDto> boardResponseDtoList = new ArrayList<>();
+        for (Board board : boardList) {
+            boardResponseDtoList.add(BoardResponseDto.builder()
+                    .boardId(board.getId())
+                    .boardName(board.getBoardName())
+                    .category(board.getCategory())
+                    .build());
+        }
 
+        return boardResponseDtoList;
+    }
+ 
     /**
      * 게시판 상세 조회 메소드
      */
@@ -75,8 +82,17 @@ public class BoardService {
         //board.setBoardName("박성술"); //영속성이 살아있는 상태에서만 더티체킹 -> update쿼리 발생.
     }
 
-    public void delete(Long id) {
+    private Board findById(Long id) {
+        try {
+            return boardRepository.findById(id).orElseThrow(() -> new Exception("조회 실패"));
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
+    @Transactional
+    public void delete(Long id) {
+        boardRepository.delete(findById(id));
     }
 
     public void update(Long id, String boardName, String category) {

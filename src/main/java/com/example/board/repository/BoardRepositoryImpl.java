@@ -20,7 +20,7 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
     @Override
     public List<Board> findBoardListByCondition(BoardSearchCondition condition) {
 
-        List<Board> list = queryFactory.select(board)
+        return queryFactory.select(board)
                 .from(board)
                 .where(
                         likeBoardName(condition.getBoardName()),
@@ -30,24 +30,18 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
                         board.boardName.asc(),
                         board.id.desc()
                 ).fetch();
-
-        return list;
     }
 
     //동적 쿼리 작성 메소드
     public BooleanExpression likeBoardName(String boardName) {
-        if (StringUtils.hasText(boardName)) {
-            return null;
-        }
-        return board.boardName.containsIgnoreCase(boardName);
+        return !StringUtils.hasText(boardName) ? null : board.boardName.containsIgnoreCase(boardName);
     }
 
     public BooleanExpression likeCategory(String category) {
-        if (StringUtils.hasText(category)) {
+        if (!StringUtils.hasText(category)) {
             return null;
         }
         return board.category.containsIgnoreCase(category);
     }
-
 
 }
