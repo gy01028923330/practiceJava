@@ -6,5 +6,5 @@ import com.example.board.dto.BoardContentSearchCondition;
 import java.util.List;
 
 public interface BoardContentRepositoryCustom {
-    List<BoardContent> findByBoardContentIdByCondition(BoardContentSearchCondition condition);
+    List<BoardContent> findBoardContentByCondition(BoardContentSearchCondition condition);
 }
