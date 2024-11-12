@@ -6,6 +6,7 @@ import com.example.app.boardContent.dto.BoardContentResponseDto;
 import com.example.app.boardContent.dto.BoardContentSearchCondition;
 import com.example.app.boardContent.dto.BoardContentUpdateDto;
 import com.example.app.boardContent.repository.BoardContentRepository;
+import com.example.app.reply.domain.Reply;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

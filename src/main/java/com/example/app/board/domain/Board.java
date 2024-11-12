@@ -2,9 +2,13 @@ package com.example.app.board.domain;
 
 
 import com.example.app.board.dto.BoardUpdateDto;
+import com.example.app.boardContent.domain.BoardContent;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +30,8 @@ public class Board {
     private String boardName;
     @Column
     private String category;
+//    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<BoardContent> boardContents = new ArrayList<>();
 
 
     public void updateFrom(BoardUpdateDto requestDto) {
