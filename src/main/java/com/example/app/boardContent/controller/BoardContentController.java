@@ -20,9 +20,9 @@ public class BoardContentController {
     private final BoardContentService boardContentService;
 
 
-    @PostMapping("/api/board-content/")
+    @PostMapping("/api/board-content")
     public ResponseEntity<String> createBoardContent(@RequestBody BoardContentCreateDto createDto) {
-        boardContentService.create(createDto.getTitle(), createDto.getContent());
+        boardContentService.create(createDto);
         return ResponseEntity.ok("게시판 생성 완료");
     }
 

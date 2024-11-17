@@ -14,7 +14,24 @@ public class BoardContentCreateDto {
 
     private String title;
     private String content;
-    private Board board;
-    private Member createdBy;
+    private Long boardId;
+    private Long createdMemberId;
+
+    /**
+     * frontEnd
+     *
+     * 1번 게시판 글을 작성 중인 상황
+     *
+     * fetch.POST("~/api/board-content").body(
+     *  object : {
+     *  "title" : "요네 분석",
+     *  "content" : "사기꾼",
+     *  "boardId" : "1"
+     *
+     * )
+     *
+     *
+     *
+     */
 
 }

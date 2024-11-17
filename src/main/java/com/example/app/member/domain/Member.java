@@ -11,9 +11,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Entity
 public class Member {
 
     @Id

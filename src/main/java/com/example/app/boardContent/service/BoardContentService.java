@@ -2,7 +2,9 @@ package com.example.app.boardContent.service;
 
 
 import com.example.app.board.domain.Board;
+import com.example.app.board.service.BoardService;
 import com.example.app.boardContent.domain.BoardContent;
+import com.example.app.boardContent.dto.BoardContentCreateDto;
 import com.example.app.boardContent.dto.BoardContentResponseDto;
 import com.example.app.boardContent.dto.BoardContentSearchCondition;
 import com.example.app.boardContent.dto.BoardContentUpdateDto;
@@ -19,17 +21,21 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class BoardContentService {
+
     private final BoardContentRepository boardContentRepository;
 
+    private final BoardService boardService;
 
     @Transactional
-    public void create(String title, String content, Board board, Member createdBy) {
-        boardContentRepository.save(
+    public void create(BoardContentCreateDto createDto) {
+
+        BoardContent savedBoardContent =
+                boardContentRepository.save(
                 BoardContent.builder()
-                        .title(title)
-                        .content(content)
-                        .board(board)
-                        .createdBy(createdBy)
+                        .title(createDto.getTitle())
+                        .content(createDto.getContent())
+                        .board(Board.builder().id(createDto.getBoardId()).build())
+                        .createdBy(Member.builder().id(createDto.getCreatedMemberId()).build())
                         .build()
         );
     }
