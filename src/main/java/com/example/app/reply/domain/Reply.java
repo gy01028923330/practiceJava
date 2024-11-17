@@ -2,6 +2,7 @@ package com.example.app.reply.domain;
 
 
 import com.example.app.boardContent.domain.BoardContent;
+import com.example.app.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,11 +17,12 @@ public class Reply {
     @Column(name = "reply_id")
     private Long id;
     private String replyContent;
-    private String replyBy;
     @CreatedDate
     private LocalDateTime createdDate;
-    private String replyTime;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_content_id", nullable = false)
     private BoardContent boardContent;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 }

@@ -32,6 +32,12 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
                 ).fetch();
     }
 
+    @Override
+    public Long countDuplicateBoardName(String boardName) {
+        if
+
+    }
+
     //동적 쿼리 작성 메소드
     public BooleanExpression likeBoardName(String boardName) {
         return !StringUtils.hasText(boardName) ? null : board.boardName.containsIgnoreCase(boardName);

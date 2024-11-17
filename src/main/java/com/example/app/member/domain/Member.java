@@ -1,14 +1,17 @@
 package com.example.app.member.domain;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.app.boardContent.domain.BoardContent;
+import com.example.app.reply.domain.Reply;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
@@ -21,6 +24,10 @@ public class Member {
     private String name;
     private String gender;
     private Integer age;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<BoardContent> boardContents = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Reply> replys = new ArrayList<>();
 
     /**
      *  접근제한자를 private으로 초기 세팅하는 이유

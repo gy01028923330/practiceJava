@@ -36,6 +36,13 @@ public class BoardService {
 //                .category(category)   // "테스트"
 //                .build();
 //        boardRepository.save(build);
+/**
+ * SELECT COUNT(*)
+ * FROM board
+ * WHERE board_name = '롤 게시판'
+ */
+        if (checkDuplicateBoardName(boardName))
+            return;
 
         boardRepository.save(
                 Board.builder()
@@ -44,6 +51,11 @@ public class BoardService {
                 .build()
         );
 
+    }
+
+    private boolean checkDuplicateBoardName(String boardName) {
+        Long count = boardRepository.countDuplicateBoardName(boardName);
+        return count > 0;
     }
 
 

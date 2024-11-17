@@ -1,11 +1,13 @@
 package com.example.app.boardContent.service;
 
 
+import com.example.app.board.domain.Board;
 import com.example.app.boardContent.domain.BoardContent;
 import com.example.app.boardContent.dto.BoardContentResponseDto;
 import com.example.app.boardContent.dto.BoardContentSearchCondition;
 import com.example.app.boardContent.dto.BoardContentUpdateDto;
 import com.example.app.boardContent.repository.BoardContentRepository;
+import com.example.app.member.domain.Member;
 import com.example.app.reply.domain.Reply;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,11 +23,13 @@ public class BoardContentService {
 
 
     @Transactional
-    public void create(String title, String content) {
+    public void create(String title, String content, Board board, Member createdBy) {
         boardContentRepository.save(
                 BoardContent.builder()
                         .title(title)
                         .content(content)
+                        .board(board)
+                        .createdBy(createdBy)
                         .build()
         );
     }

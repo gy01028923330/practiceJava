@@ -8,4 +8,8 @@ import java.util.List;
 public interface BoardRepositoryCustom {
     List<Board> findBoardListByCondition(BoardSearchCondition condition);
 
+    Long countDuplicateBoardName(String boardName);
+
+
+
 }
