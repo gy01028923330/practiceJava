@@ -9,4 +9,8 @@ import lombok.Data;
 @Builder
 @Data
 public class ReplyResponseDto {
+    private Long replyId;
+    private String replyContent;
+    private Long boardContentId;
+    private Long memberId;
 }

@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-import static com.example.board.domain.QBoard.board;
+import static com.example.app.board.domain.QBoard.board;
 
 
 @RequiredArgsConstructor
@@ -34,8 +34,7 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom {
 
     @Override
     public Long countDuplicateBoardName(String boardName) {
-        if
-
+        return null;
     }
 
     //동적 쿼리 작성 메소드

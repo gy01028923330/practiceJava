@@ -9,7 +9,8 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-import static com.example.board.domain.QBoardContent.boardContent;
+import static com.example.app.boardContent.domain.QBoardContent.boardContent;
+
 
 @RequiredArgsConstructor
 public class BoardContentRepositoryImpl implements BoardContentRepositoryCustom {

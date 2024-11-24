@@ -60,10 +60,11 @@ public class BoardContentService {
     public BoardContentResponseDto getOneBoardContent (Long boardContentId) throws Exception {
 //        Optional<BoardContent> byId = boardContentRepository.findById(boardContentId);
 //        BoardContent boardContent = byId.get();
+        BoardContent byId = findById(boardContentId);
         return BoardContentResponseDto.builder()
                 .boardContentId(boardContentId)
-                .title(findById(boardContentId).getTitle())
-                .content(findById(boardContentId).getContent())
+                .title(byId.getTitle())
+                .content(byId.getContent())
                 .build();
     }
 

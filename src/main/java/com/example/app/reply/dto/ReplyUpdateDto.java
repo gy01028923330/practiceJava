@@ -9,4 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReplyUpdateDto {
+    private String replyContent;
+    private Long boardContentId;
+    private Long memberId;
 }

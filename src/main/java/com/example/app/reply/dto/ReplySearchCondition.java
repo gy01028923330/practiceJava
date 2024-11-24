@@ -2,14 +2,11 @@ package com.example.app.reply.dto;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @AllArgsConstructor
-@Getter
-@Setter
-public class ReplyCreateDto {
-
+@Data
+public class ReplySearchCondition {
     private String replyContent;
     private Long boardContentId;
     private Long memberId;
